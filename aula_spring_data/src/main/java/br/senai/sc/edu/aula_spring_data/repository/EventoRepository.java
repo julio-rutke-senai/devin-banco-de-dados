@@ -20,5 +20,10 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
 	Integer countEvento();
 	
 	Evento codigo(Long codigo);
+	
+	@Query(value = "Select * from Evento", nativeQuery = true)
+	List<Evento> buscaPorNomeNativo(String nome);
+	
+	
 
 }

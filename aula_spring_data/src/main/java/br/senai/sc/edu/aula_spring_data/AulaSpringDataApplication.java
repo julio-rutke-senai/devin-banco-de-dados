@@ -16,12 +16,17 @@ import org.springframework.data.domain.Sort.Direction;
 
 import br.senai.sc.edu.aula_spring_data.dominio.Evento;
 import br.senai.sc.edu.aula_spring_data.repository.EventoRepository;
+import br.senai.sc.edu.aula_spring_data.repository.InscricaoRepository;
+import dto.ClienteEventoDTO;
 
 @SpringBootApplication
 public class AulaSpringDataApplication implements CommandLineRunner{
 	
 	@Autowired
 	EventoRepository eventoRepository;
+	
+	@Autowired
+	InscricaoRepository inscricaoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AulaSpringDataApplication.class, args);
@@ -48,19 +53,44 @@ public class AulaSpringDataApplication implements CommandLineRunner{
 //		
 //		eventoRepository.saveAll(Arrays.asList(e1, e2, e3));
 		
-		List<Evento> lista = eventoRepository.buscaPorNome("%Evento%");
+		//List<Evento> lista = eventoRepository.buscaPorNome("%Evento%");
 		
 //		Order order = new Order
 //		
-//		Page<Evento> lista = eventoRepository.findAll();
+//		Page<Evento> lista = eventoRepository.findAll(PageRequest.of(0, 3));
 		
-		int count = eventoRepository.countEvento();
 		
-		System.out.println("++++++++++++++++");
+		//int count = eventoRepository.countEvento();
 		
-		System.out.println(count);
-
-		System.out.println("++++++++++++++++");
+//		System.out.println("++++++++++++++++");
+		
+//		System.out.println(count);
+//
+//		System.out.println("+++++++ Página 1 +++++++++");
+//		
+//		lista.forEach(System.out::println);
+//		
+//
+//		System.out.println("+++++++++ Página 2 +++++++");
+//		
+//		lista = eventoRepository.findAll(PageRequest.of(1, 3));
+//		
+//		lista.forEach(System.out::println);
+//		
+//
+//		System.out.println("+++++++ Página 3 +++++++++");
+//
+//		lista = eventoRepository.findAll(PageRequest.of(2, 3));
+//		
+//		lista.forEach(System.out::println);
+//		
+//
+//
+//		System.out.println("+++++++ Página 4 +++++++++");
+//
+//		lista = eventoRepository.findAll(PageRequest.of(3, 3));
+		
+		List<ClienteEventoDTO> lista = inscricaoRepository.buscarClienteEventoNativo();
 		
 		lista.forEach(System.out::println);
 		
